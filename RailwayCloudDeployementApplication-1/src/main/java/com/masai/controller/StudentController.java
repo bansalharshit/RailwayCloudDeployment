@@ -73,4 +73,11 @@ public List<Student> getAllStudents(){
 	return sRepo.findAll();
 }
 
+@DeleteMapping("/students/{roll}")
+public ResponseEntity<Student>deleteStudentHandler(@PathVariable Integer roll){
+	Student students=sRepo.findById(roll).get();
+	sRepo.delete(students);
+	return new ResponseEntity<Student>(students,HttpStatus.OK);
+}
+
 }
